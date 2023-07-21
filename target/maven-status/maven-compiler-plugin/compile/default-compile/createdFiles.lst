@@ -1,0 +1,11 @@
+br/com/jsn/repository/ProdutoRepository.class
+br/com/jsn/entity/UsuarioEntity.class
+br/com/jsn/JsnProductCatalogApplication.class
+br/com/jsn/service/UsuarioService.class
+br/com/jsn/entity/ProdutoEntity.class
+br/com/jsn/config/PersistenceJPAConfig.class
+br/com/jsn/service/Crud.class
+br/com/jsn/controller/UsuarioController.class
+br/com/jsn/controller/ProdutoController.class
+br/com/jsn/repository/UsuarioRepository.class
+br/com/jsn/service/ProdutoService.class
