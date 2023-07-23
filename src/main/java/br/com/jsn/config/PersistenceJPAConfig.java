@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:application.properties" })
-//@ComponentScan({ "br.com.jsn" })
 @EnableJpaRepositories(basePackages = "br.com.jsn.repository")
 public class PersistenceJPAConfig {
 

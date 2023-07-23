@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.jsn.entity.ProdutoEntity;
+import br.com.jsn.entity.UsuarioEntity;
 import br.com.jsn.repository.ProdutoRepository;
 
 @Service
@@ -59,29 +60,59 @@ public class ProdutoService  implements Crud<ProdutoEntity> {
 		
 		String result = null ;
 		ObjectMapper objectMapper = new ObjectMapper();
-		
+		ProdutoEntity novoProduto = null ;
 		try {
-			 result = objectMapper.writeValueAsString(produtoRepository.buscarProdutoPorId(id));
+		
+			 novoProduto = produtoRepository.buscarProdutoPorId(id);
+			 result = objectMapper.writeValueAsString(novoProduto);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			e.getMessage();
 		}
-		return result;
+			return result ;
 	}
 
 
 	@Override
 	public void deletar(Integer id) {
-		// TODO Auto-generated method stub
+		
+		try {
+			produtoRepository.deleteById(id.longValue());
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				e.getMessage();
+			}
 		
 	}
 
 
 	@Override
 	public String atualizar(ProdutoEntity data) {
-		// TODO Auto-generated method stub
-		return null;
+		String result = null ;
+		ObjectMapper objectMapper = new ObjectMapper();
+		ProdutoEntity updateProduto = null ;
+		try {
+			updateProduto = produtoRepository.findById(data.getProdutoId().longValue())
+			            .map(produto -> {
+			                
+			            	produto.setProdutoFornecedor(data.getProdutoFornecedor());
+			            	produto.setProdutoNome(data.getProdutoNome());
+			                produto.setProdutoValor(data.getProdutoValor());
+			                return produtoRepository.save(produto);
+			            })
+			            .orElseGet(() -> {
+			                return produtoRepository.saveAndFlush(data);
+			            });
+			
+			 result = objectMapper.writeValueAsString(updateProduto);
+		} catch (JsonProcessingException e) {
+			
+			e.printStackTrace();
+			e.getMessage();
+		}
+			return result ;
 	}
 
 }
