@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.jsn.entity.ProdutoEntity;
 import br.com.jsn.service.ProdutoService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping(value = "/produto")
 public class ProdutoController implements CrudApi<ProdutoEntity>{

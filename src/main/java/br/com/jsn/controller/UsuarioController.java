@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.jsn.entity.UsuarioEntity;
 import br.com.jsn.service.UsuarioService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController implements CrudApi<UsuarioEntity>{

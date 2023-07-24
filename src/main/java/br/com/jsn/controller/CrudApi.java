@@ -20,7 +20,7 @@ public interface CrudApi<T> {
 	@PostMapping("/criar") 
 	public ResponseEntity<String> criar(@RequestBody T produto);
 	
-	@GetMapping("/list")
+	@GetMapping("/listar")
 	public ResponseEntity<String> listar();
 	
 	
